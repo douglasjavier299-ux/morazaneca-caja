@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#DB2E2B">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <title>La Morazaneca | Caja</title>
+
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icon-192.png">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+
+  <style>
+    html,body {
+      width:100%;
+      height:100%;
+      margin:0;
+      padding:0;
+      overflow:hidden;
+      background:#fff;
+    }
+
+    #appFrame {
+      position:fixed;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+      margin:0;
+      padding:0;
+      display:block;
+      background:#fff;
+    }
+
+    #loading {
+      position:fixed;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      gap:14px;
+      font-family:Arial,sans-serif;
+      background:#fff;
+      color:#222;
+      z-index:2;
+    }
+
+    #loading .mark {
+      width:72px;
+      height:72px;
+      border-radius:22px;
+      background:#DB2E2B;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      font-size:28px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="loading">
+    <div class="mark">LM</div>
+    <strong>Abriendo caja...</strong>
+  </div>
+
+  <iframe
+    id="appFrame"
+    src="https://script.google.com/macros/s/AKfycbwFaZwIWhr5156VWskc9UQDXQRwXLAeBBUTuStjkyA2xg5nYf2fGiLsDkZ9t2V3gAJjYA/exec"
+    allow="fullscreen; clipboard-read; clipboard-write"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+
+  <script>
+    const frame = document.getElementById('appFrame');
+    const loading = document.getElementById('loading');
+
+    frame.addEventListener('load', () => {
+      loading.style.display = 'none';
+    });
+
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(console.error);
+      });
+    }
+  </script>
+</body>
+</html>
