@@ -1,4 +1,4 @@
-const CACHE = 'morazaneca-shell-v1';
+const CACHE = 'morazaneca-shell-v2';
 const ASSETS = [
   './',
   './index.html',
