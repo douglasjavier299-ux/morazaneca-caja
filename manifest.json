@@ -1,16 +1,17 @@
 {
+  "id": "./",
   "name": "Carnicería La Morazaneca",
   "short_name": "La Morazaneca",
   "description": "Caja de Carnicería La Morazaneca",
-  "start_url": "./",
+  "start_url": "./index.html",
   "scope": "./",
-  "display": "fullscreen",
+  "display": "standalone",
   "display_override": [
     "fullscreen",
     "standalone"
   ],
   "orientation": "landscape",
-  "background_color": "#ffffff",
+  "background_color": "#DB2E2B",
   "theme_color": "#DB2E2B",
   "icons": [
     {
